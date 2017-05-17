@@ -2,7 +2,7 @@ var areaJson;
 var vm=new Vue({
 	el:'#content',
 	data:{
-		area1s:['北京市','天津市','上海市','广东省'],
+		area1s:[],
 		area2s:[],
 		area3s:[],
 		plm:['北京','上海','天津','重庆'],

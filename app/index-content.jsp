@@ -1,5 +1,5 @@
 <%@ page language="java"  pageEncoding="UTF-8"%>
-<div class="container" id="content">
+<div class="container" id="content" v-cloak>
 <div class="well well-lg">
 <div class="row" style="padding-top: 15px;">
 	<div class="col-md-4">
