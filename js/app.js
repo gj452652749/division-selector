@@ -1,15 +1,15 @@
 var areaJson;
 var vm=new Vue({
-	el:'.container',
+	el:'#content',
 	data:{
 		area1s:['北京市','天津市','上海市','广东省'],
 		area2s:[],
 		area3s:[],
 		plm:['北京','上海','天津','重庆'],
 		areaSelected:{
-			area1:'山西',
-			area2:'阳泉',
-			area3:'',
+			area1:'不限',
+			area2:'不限',
+			area3:'不限',
 			isPlm:false
 		},
 		user:{
@@ -28,10 +28,10 @@ var vm=new Vue({
 			console.log(data);
 			areaJson=data;
 			$.each(areaJson, function() {
-				console.log(this.name);
+				//console.log(this.name);
 				vm.area1s.push(this.name);
 			});
-			vm.areaSelected.area1='广东';
+			vm.areaSelected.area1='不限';
 		})
 	},
 	updated() {
