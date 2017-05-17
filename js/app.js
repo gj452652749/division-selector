@@ -69,25 +69,10 @@ var vm=new Vue({
 	},
 	computed:{
 		area2Display:function() {
-			var returnVar;
 			console.log(this+'computed worked!');
-			if(areaJson==undefined)
-				returnVar= 'none';
-//			for(var i=0;i<areaJson.length;i++) {
-//				console.log('computed'+areaJson[i].name);
-//			}
-//			$.each(areaJson, function() {
-//				console.log('computed'+this.name);
-//			});
-//			if(this.areaSelected.area1=='北京')
-//				console.log('北京choosed');
-			if(this.areaSelected.isPlm) {
-				if(this.areaSelected.area1=='北京'){
-					returnVar= 'none';
-				}
-			}
-			else returnVar= 'block';
-			return returnVar;
+			if(this.areaSelected.isPlm)
+				return 'none';
+			return 'block';
 		}
 	},
 	watch:{
@@ -101,18 +86,19 @@ var vm=new Vue({
 				//如果是直辖市，则将area2s隐藏，更新area3s列表				
 				//命中到直辖市				
 				if(val==this.name) {
+					vm.areaSelected.area2=val;
+					vm.area2s.push(val);
 					vm.areaSelected.isPlm=true;					
 					$.each(this.city, function() {
 						$.each(this.area, function(i,val) {
 							vm.area3s.push(val);
-							console.log(val);
+//							console.log(val);
 						});
 							return false;
 					});
 					return false;
 				}
 //				console.log(this.name);
-//				vm.area1s.push(this.name);
 
 				});
 				
@@ -123,12 +109,11 @@ var vm=new Vue({
 				if(val==this.name) {
 					$.each(this.city, function() {
 						vm.area2s.push(this.name);
-						console.log(this.name);
+//						console.log(this.name);
 					});
 					return false;
 				}
 //				console.log(this.name);
-//				vm.area1s.push(this.name);
 			});
 		}
 		},
@@ -137,7 +122,7 @@ var vm=new Vue({
 			if($.inArray(vm.areaSelected.area1,vm.plm)>=0)
 				return;
 			vm.area3s=[];
-			console.log('area2 changed'+val);
+//			console.log('area2 changed'+val);
 			$.each(areaJson, function() {
 				//省
 				if(vm.areaSelected.area1==this.name) {
@@ -146,14 +131,13 @@ var vm=new Vue({
 						if(val==this.name) {
 							$.each(this.area, function(i,val) {
 								vm.area3s.push(val);
-								console.log(this);
+//								console.log(this);
 							});
 						return false;
 						}
 					});
 				}
 //				console.log(this.name);
-//				vm.area1s.push(this.name);
 			});
 		}
 	}
